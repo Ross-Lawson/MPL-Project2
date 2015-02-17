@@ -33,6 +33,7 @@ var prices = {
 	}
 };
 var insurance = {
+	'None' : 0,
 	'Normal' : 0.15,
 	'High Risk' : 2.15 
 };
