@@ -73,7 +73,8 @@ function initGui() {
 	}
 	elem += '</select></div>';
 	elem += '<div class="inputFields">';
-	elem += 'Weight of your document/parcel: <input type="text" name="weight" value=""> grams';
+	elem += 'Weight of your document/parcel: <input type="text" name="weight" value=""> grams<br>';
+	elem += 'Send bill to my email: <input type="text" name="email" value=""> <button data-action=\"mail\">Send bill</button>';
 	elem += '</div>';
 	elem += '</div>'; // options
 	content.html(elem);
@@ -88,7 +89,11 @@ function initGui() {
 	showPrices();
 }
 
-
+function mail() {
+	postAjax({'action' : 'mailBill', 'email' : content.find("input[name=email]").val(), 'bill' : resultDiv.html()+"\r\n"+iresultDiv.html()+"\r\n"+tresultDiv.html()}, function(response) {
+		console.log(response);
+	});
+}
 
 function showPrices() {
 	var active = content.find("select[name=city]").val();
